@@ -222,9 +222,10 @@ function whack(event) {
 * Adds the 'click' event listeners to the moles. See the instructions
 * for an example on how to set event listeners using a for loop.
 */
-function setEventListeners(){
-  // TODO: Write your code here
-
+function setEventListeners() {
+  moles.forEach(mole => {
+    mole.addEventListener('click', whack);
+  });
   return moles;
 }
 
@@ -245,8 +246,7 @@ function setDuration(duration) {
 * timer using clearInterval. Returns "game stopped".
 *
 */
-function stopGame(){
-  // stopAudio(song);  //optional
+function stopGame() {
   clearInterval(timer);
   return "game stopped";
 }
@@ -267,13 +267,12 @@ function stopGame(){
 
  * Note: Simply uncommenting `setDuration(10);` and `showUp();` is not enough. To make the game work, ensure all necessary functions listed above are called to initialize the score, timer, event listeners, and mole appearances. 
 */
-function startGame(){
-  //clearScore();
-  //stopGame();   //optional
-  //setDuration(10);
-  //setEventListeners();
-  //startTimer();
-  //showUp();
+function startGame() {
+  clearScore();
+  setDuration(10); // Set the game duration to 10 seconds for example
+  startTimer();
+  showUp();
+  setEventListeners();
   return "game started";
 }
 

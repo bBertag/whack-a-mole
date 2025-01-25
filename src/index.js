@@ -4,6 +4,8 @@ const startButton = document.querySelector('#start');
 // TODO: Add the missing query selectors:
 const score = document.querySelector('#score'); // Use querySelector() to get the score element
 const timerDisplay = document.querySelector('#timer'); // use querySelector() to get the timer element.
+const hitSound = document.getElementById('hit-sound');
+const moleSong = document.getElementById('mole-song');
 
 let time = 0;
 let timer;
@@ -95,6 +97,8 @@ function startTimer() {
 
 function whack(event) {
   updateScore();
+  hitSound.currentTime = 0; 
+  hitSound.play(); 
   return points;
 }
 
@@ -112,15 +116,18 @@ function setDuration(duration) {
 
 function stopGame() {
   clearInterval(timer);
+  moleSong.pause(); 
+  moleSong.currentTime = 0; 
   return "game stopped";
 }
 
 function startGame() {
   clearScore();
-  setDuration(10); // Set the game duration to 10 seconds for example
+  setDuration(10); 
   startTimer();
   showUp();
   setEventListeners();
+  moleSong.play(); 
   return "game started";
 }
 
